@@ -20,13 +20,13 @@ body {
 
 .note h1 {
     margin: 0px;
-    text-align: center;
+    text-align: left;
 }
 
 .note p {
+    text-align: left;
     font-size: 1.3rem;
     display: block;
-    text-align: center;
 }
 
 .note .trash-button {

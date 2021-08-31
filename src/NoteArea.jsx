@@ -22,12 +22,18 @@ function NoteArea(props) {
     function saveNote() {
         if (textInput.title !== "" && textInput.body !== "") {
             props.onAdd(textInput);
-        setTextInput(() => {
-            return {
-                title: "",
-                body: ""
-            }
-        })
+            setTextInput(() => {
+                return {
+                    title: "",
+                    body: ""
+                }
+            })
+        }
+    }
+
+    function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            saveNote();
         }
     }
 
@@ -39,15 +45,20 @@ function NoteArea(props) {
                     onChange={handleChange}
                     name="title" type="text"
                     placeholder="title"
-                    value={textInput.title}>
+                    value={textInput.title}
+                    onKeyPress={handleKeyPress}
+                >
                 </input>
                 <input
                     value={textInput.body}
                     autoComplete="off"
                     onChange={handleChange}
                     name="body" type="text"
-                    placeholder="type your note here..."></input>
-                    <i onClick={saveNote} className="fas fa-plus fa-2x submit-button"></i>
+                    placeholder="type your note here..."
+                    onKeyPress={handleKeyPress}
+                >
+                </input>
+                <i onClick={saveNote} className="fas fa-plus fa-2x submit-button"></i>
             </div>
         </div>
     )
