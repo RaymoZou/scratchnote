@@ -47,7 +47,7 @@ function NoteArea(props) {
                     onChange={handleChange}
                     name="body" type="text"
                     placeholder="type your note here..."></input>
-                <button onClick={saveNote}>Add note</button>
+                    <i onClick={saveNote} className="fas fa-plus fa-2x submit-button"></i>
             </div>
         </div>
     )

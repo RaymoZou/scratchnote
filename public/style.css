@@ -24,13 +24,18 @@ body {
 }
 
 .note p {
+    font-size: 1.3rem;
     display: block;
     text-align: center;
 }
 
-.note i {
+.note .trash-button {
     margin-top: 0.5rem;
     display: inline-block;
+}
+
+.note .trash-button:hover {
+    transform: scale(1.2);
 }
 
 .NoteArea {
@@ -49,7 +54,11 @@ body {
     outline-width: 0;
 }
 
-.NoteArea button {
-    border-radius: 1rem;
-    margin-top: 1rem;
+.NoteArea .submit-button {
+    position: relative;
+    left: 45%;
+}
+
+.NoteArea .submit-button:hover {
+    transform: scale(1.4);
 }

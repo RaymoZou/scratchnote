@@ -16,7 +16,7 @@ function Note(props) {
         <div className="note">
             <h1>{props.title}</h1>
             <p>{props.content}</p>
-            <i onClick={deleteNote} className="fas fa-trash fa-lg"></i>
+            <i onClick={deleteNote} className="fas fa-trash-alt fa-lg trash-button"></i>
         </div>
     )
 }
