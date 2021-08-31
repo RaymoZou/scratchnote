@@ -47,7 +47,7 @@ function NoteArea(props) {
                     onChange={handleChange}
                     name="body" type="text"
                     placeholder="type your note here..."></input>
-                <button onClick={saveNote}>+</button>
+                <button onClick={saveNote}>Add note</button>
             </div>
         </div>
     )
