@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Note from "./Note";
 import NoteArea from "./NoteArea";
+import Toolbar from "./Toolbar";
 
 let index = 0;
 
@@ -30,7 +31,7 @@ function App() {
     }
 
     return <div>
-        <h1 className="header">ScratchNote</h1>
+        <Toolbar/>
         <NoteArea onAdd={addNote} />
         {/* <Note title="This is a Sample Note" content="Click on the trash icon to delete me!" /> */}
         {notes.map((note) => {

@@ -3,6 +3,8 @@ body {
     text-align: center;
     font-family: 'Roboto', sans-serif;
     background-color: #fdf8e5;
+    /* background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png"); */
+    margin: 0px;
 }
 
 .header {
@@ -35,10 +37,11 @@ body {
 }
 
 .note .trash-button:hover {
-    transform: scale(1.2);
+    transform: scale(1.2) rotate(15deg);
 }
 
 .NoteArea {
+    background-image: none;
     border-style: solid;
     border-radius: 1rem;
     display: inline-block;
@@ -61,4 +64,17 @@ body {
 
 .NoteArea .submit-button:hover {
     transform: scale(1.4);
+}
+
+.Toolbar {
+    /* background-color: #4B6587; */
+    color: white;
+    padding: 1rem;
+    background-color: #3373c7;
+    margin-bottom: 1rem;
+}
+
+.Toolbar h1 {
+    margin: 0px;
+    font-size: 4rem;
 }
