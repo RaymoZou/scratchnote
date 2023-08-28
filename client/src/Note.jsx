@@ -7,9 +7,7 @@ function Note(props) {
     }
 
     function deleteNote() {
-        props.onDelete({
-            id: props.id
-        });
+        props.onDelete(props._id);
     }
 
     return (
