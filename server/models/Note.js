@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const NoteSchema = new mongoose.Schema({
-    _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
+    // _id: {
+    //     type: Number,
+    //     required: true
+    // },
     title: {
         type: String,
         required: true
@@ -14,3 +14,6 @@ const NoteSchema = new mongoose.Schema({
         required: true
     },
 })
+
+const Note = mongoose.model('notes', NoteSchema);
+module.exports = Note;

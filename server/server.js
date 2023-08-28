@@ -26,4 +26,10 @@ app.get('/getNotes', async (req, res) => {
     res.send(notes);
 })
 
+app.delete('/deleteNote/:id', async (req, res) => {
+    const id = req.params.id;
+    await Note.deleteOne({_id: id})
+    res.send(`note with _id ${id} successfully deleted`);
+})
+
 app.listen(process.env.PORT, () => console.log('Listening on port ' + process.env.PORT))
