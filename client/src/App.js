@@ -10,15 +10,18 @@ function App() {
 
     useEffect(() => {
         // TODO: refactor with async/await
+        fetchNotes();
+    }, [])
+
+    function fetchNotes() {
         Axios.get("http://localhost:3001/getNotes").then((res) => {
             updateNotes(res.data);
         });
-    }, [])
+    }
 
     function addNote(note) {
         const { title, body } = note;
-        Axios.post("http://localhost:3001/addNote", note);
-        updateNotes([...notes, { title, body }])
+        Axios.post("http://localhost:3001/addNote", note).then(fetchNotes());
     }
 
     function deleteNote(id) {
