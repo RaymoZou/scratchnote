@@ -9,24 +9,35 @@ function App() {
     const [notes, updateNotes] = useState([])
 
     useEffect(() => {
-        // TODO: refactor with async/await
         fetchNotes();
     }, [])
 
-    function fetchNotes() {
-        Axios.get("http://localhost:3001/getNotes").then((res) => {
-            updateNotes(res.data);
-        });
+    async function fetchNotes() {
+        try {
+            const response = await Axios.get("http://localhost:3001/getNotes")
+            updateNotes(response.data);
+            console.log('updated n0tes');
+        } catch (err) {
+            console.log('there was an error fetching the notes');
+        }
     }
 
-    function addNote(note) {
-        const { title, body } = note;
-        Axios.post("http://localhost:3001/addNote", note).then(fetchNotes());
+    async function addNote(note) {
+        try {
+            await Axios.post("http://localhost:3001/addNote", note)
+            fetchNotes();
+        } catch (err) {
+            console.log('there was an error adding the note')
+        }
     }
 
-    function deleteNote(id) {
-        Axios.delete(`http://localhost:3001/deleteNote/${id}`);
-        // TODO: front-end rerendering after delete
+    async function deleteNote(id) {
+        try {
+            await Axios.delete(`http://localhost:3001/deleteNote/${id}`);
+            fetchNotes();
+        } catch (err) {
+            console.log('there was an error deleting the note');
+        }
     }
 
     return <div>
