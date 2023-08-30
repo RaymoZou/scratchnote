@@ -30,11 +30,11 @@ app.delete('/deleteNote/:id', async (req, res) => {
     try {
         const id = req.params.id;
         await Note.deleteOne({_id: id})
-        console.log(res.statusCode);
+        
+        res.send(`note with id ${id} successfully deleted`); // added this line
     } catch (err) {
         console.log('there was an error deleting the post');
     }
-    // res.send(`note with _id ${id} successfully deleted`);
 })
 
 app.listen(process.env.PORT, () => console.log('Listening on port ' + process.env.PORT))
