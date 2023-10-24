@@ -10,7 +10,8 @@ browser.
 
 ## Notes
 - Both the note title and content fields are required to create a note.
-- ScratchNote currently only runs locally
+- ScratchNote currently only runs on a local instance
+- Depending on your current settings, you may have to allow your IP address on the MongoDB console to allow read/write access to your database
 
 ## Setup
 1. Clone the repository with:
