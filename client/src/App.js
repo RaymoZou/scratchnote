@@ -14,9 +14,8 @@ function App() {
 
     async function fetchNotes() {
         try {
-            const response = await Axios.get("http://localhost:3001/getNotes")
+            const response = await Axios.get(`${process.env.REACT_APP_SERVER_URL}/getNotes`);
             updateNotes(response.data);
-            console.log('updated n0tes');
         } catch (err) {
             console.log('there was an error fetching the notes');
         }
@@ -24,7 +23,7 @@ function App() {
 
     async function addNote(note) {
         try {
-            await Axios.post("http://localhost:3001/addNote", note)
+            await Axios.post(`${process.env.REACT_APP_SERVER_URL}/addNote`, note)
             fetchNotes();
         } catch (err) {
             console.log('there was an error adding the note')
@@ -33,7 +32,7 @@ function App() {
 
     async function deleteNote(id) {
         try {
-            await Axios.delete(`http://localhost:3001/deleteNote/${id}`);
+            await Axios.delete(`${process.env.REACT_APP_SERVER_URL}/deleteNote/${id}`);
             fetchNotes();
         } catch (err) {
             console.log('there was an error deleting the note');
@@ -43,7 +42,6 @@ function App() {
     return <div>
         <Toolbar />
         <NoteArea onAdd={addNote} />
-        {/* <Note title="This is a Sample Note" content="Click on the trash icon to delete me!" /> */}
         {notes.map((note) => {
             return <Note key={note._id} _id={note._id} title={note.title} content={note.body} onDelete={deleteNote}></Note>
         })}
