@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Note from "./Note";
 import NoteArea from "./NoteArea";
 import Toolbar from "./Toolbar";
-import Axios from "axios";
+import axios from "axios";
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
 
     async function fetchNotes() {
         try {
-            const response = await Axios.get(`${process.env.REACT_APP_SERVER_URL}/getNotes`);
+            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/getNotes`);
             updateNotes(response.data);
         } catch (err) {
             console.log('there was an error fetching the notes');
@@ -23,7 +23,7 @@ function App() {
 
     async function addNote(note) {
         try {
-            await Axios.post(`${process.env.REACT_APP_SERVER_URL}/addNote`, note)
+            await axios.post(`${process.env.REACT_APP_SERVER_URL}/addNote`, note)
             fetchNotes();
         } catch (err) {
             console.log('there was an error adding the note')
@@ -32,7 +32,7 @@ function App() {
 
     async function deleteNote(id) {
         try {
-            await Axios.delete(`${process.env.REACT_APP_SERVER_URL}/deleteNote/${id}`);
+            await axios.delete(`${process.env.REACT_APP_SERVER_URL}/deleteNote/${id}`);
             fetchNotes();
         } catch (err) {
             console.log('there was an error deleting the note');
@@ -43,7 +43,13 @@ function App() {
         <Toolbar />
         <NoteArea onAdd={addNote} />
         {notes.map((note) => {
-            return <Note key={note._id} _id={note._id} title={note.title} content={note.body} onDelete={deleteNote}></Note>
+            return <Note
+                key={note._id}
+                _id={note._id}
+                title={note.title}
+                content={note.body}
+                onDelete={deleteNote}>
+            </Note>
         })}
     </div>
 }
