@@ -23,11 +23,14 @@ browser.
 npm install
 ```
 3. Create a .env in the `server` directory with the following fields:
- ```
+```
 MONGODB_URI={YOUR_MONGODB_URI_HERE}
 PORT={PORT_NUMBER_HERE}
- ```
-
+```
+4. Create a .env in the `client` directory with following fields:
+```
+REACT_APP_SERVER_URL={BASE_URL_HERE}
+```
 
 ## Technology Stack
 <div style="display: inline-block">
