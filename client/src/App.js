@@ -4,6 +4,8 @@ import NoteArea from "./NoteArea";
 import Toolbar from "./Toolbar";
 import axios from "axios";
 
+axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL
+
 function App() {
 
     const [notes, updateNotes] = useState([])
@@ -14,7 +16,7 @@ function App() {
 
     async function fetchNotes() {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/getNotes`);
+            const response = await axios.get(`/getNotes`);
             updateNotes(response.data);
         } catch (err) {
             console.log('there was an error fetching the notes');
@@ -23,7 +25,7 @@ function App() {
 
     async function addNote(note) {
         try {
-            await axios.post(`${process.env.REACT_APP_SERVER_URL}/addNote`, note)
+            await axios.post(`/addNote`, note)
             fetchNotes();
         } catch (err) {
             console.log('there was an error adding the note')
@@ -32,7 +34,7 @@ function App() {
 
     async function deleteNote(id) {
         try {
-            await axios.delete(`${process.env.REACT_APP_SERVER_URL}/deleteNote/${id}`);
+            await axios.delete(`/deleteNote/${id}`);
             fetchNotes();
         } catch (err) {
             console.log('there was an error deleting the note');
