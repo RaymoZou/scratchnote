@@ -26,11 +26,20 @@ router.get('/notes', async (req, res) => {
     }
 });
 
+// GET note with id
+router.get('/notes/:id', async (req, res) => {
+    try {
+        const note = await Note.findOne({ _id: req.params.id });
+        res.status(200).json(note);
+    } catch (err) {
+        res.sendStatus(500);
+    }
+});
+
 // DELETE note with id
 router.delete('/notes/:id', async (req, res) => {
     try {
-        const id = req.params.id;
-        await Note.deleteOne({ _id: id });
+        await Note.deleteOne({ _id: req.params.id });
         res.sendStatus(200);
     } catch (err) {
         res.sendStatus(500);
