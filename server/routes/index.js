@@ -3,25 +3,37 @@ const express = require('express');
 const router = express.Router();
 const Note = require('../models/Note');
 
-router.post('/addNote', async (req, res) => {
-    const note = req.body;
-    const newNote = new Note(note);
-    await newNote.save();
-    res.json(newNote);
+// ADD note
+router.post('/notes', async (req, res) => {
+    try {
+        const { title, body } = req.body;
+        // TODO add error handling if title OR body not defined
+        const newNote = new Note({ title, body });
+        await newNote.save();
+        res.sendStatus(200);
+    } catch (err) {
+        res.sendStatus(500);
+    }
 });
 
-router.get('/getNotes', async (req, res) => {
-    const notes = await Note.find();
-    res.send(notes);
+// GET all notes
+router.get('/notes', async (req, res) => {
+    try {
+        const notes = await Note.find();
+        res.status(200).json(notes);
+    } catch (err) {
+        res.sendStatus(500);
+    }
 });
 
-router.delete('/deleteNote/:id', async (req, res) => {
+// DELETE note with id
+router.delete('/notes/:id', async (req, res) => {
     try {
         const id = req.params.id;
         await Note.deleteOne({ _id: id });
-        res.send(`note with id ${id} successfully deleted`); // added this line
+        res.sendStatus(200);
     } catch (err) {
-        console.log('there was an error deleting the post');
+        res.sendStatus(500);
     }
 });
 

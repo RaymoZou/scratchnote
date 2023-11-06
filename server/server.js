@@ -8,6 +8,7 @@ const router = require('./routes/index');
 // mongoDB connection
 mongoose.connect(process.env.MONGODB_URI);
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 

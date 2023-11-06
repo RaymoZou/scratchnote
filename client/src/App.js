@@ -16,7 +16,7 @@ function App() {
 
     async function fetchNotes() {
         try {
-            const response = await axios.get(`/getNotes`);
+            const response = await axios.get(`/notes`);
             updateNotes(response.data);
         } catch (err) {
             console.log('there was an error fetching the notes');
@@ -25,7 +25,7 @@ function App() {
 
     async function addNote(note) {
         try {
-            await axios.post(`/addNote`, note)
+            await axios.post(`/notes`, note)
             fetchNotes();
         } catch (err) {
             console.log('there was an error adding the note')
@@ -34,7 +34,7 @@ function App() {
 
     async function deleteNote(id) {
         try {
-            await axios.delete(`/deleteNote/${id}`);
+            await axios.delete(`/notes/${id}`);
             fetchNotes();
         } catch (err) {
             console.log('there was an error deleting the note');
